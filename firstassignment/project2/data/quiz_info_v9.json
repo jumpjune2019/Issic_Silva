@@ -1,0 +1,127 @@
+[
+	{
+		"id": "1",
+		"question": "The first Pokemon ever created.",
+		"answer": "Rhydon"
+	},
+		{
+		"id": "2",
+		"question": "This Pokemon almost appeared in the first Smash Bros.",
+		"answer": "Meowth"
+	},
+		{
+		"id": "3",
+		"question": "What Pokemon was almost the mascot for the series?",
+		"answer": "Clefairy"
+	},
+		{
+		"id": "4",
+		"question": "This Pokemon has 4 arms",
+		"answer": "Machamp"
+	},
+		{
+		"id": "5",
+		"question": "This Pokemon is one of the lightest in existence.",
+		"answer": "Ghastly"
+	},
+		{
+		"id": "6",
+		"question": "It is theorized that this Pokemon is the shadow of a Clefable",
+		"answer": "Gengar"
+	},
+		{
+		"id": "7",
+		"question": "_______ is the longest Pokemon that can hatch from an Egg.",
+		"answer": "Onyx"
+	},
+		{
+		"id": "8",
+		"question": "This pokemon is based on a living poke ball",
+		"answer": "Electrode"
+	},
+		{
+		"id": "9",
+		"question": "This Pokemon has the longest tongue",
+		"answer": "Lickitung"
+	},
+		{
+		"id": "10",
+		"question": "This Pokemon has no male counterpart.",
+		"answer": "Chancey"
+	},
+		{
+		"id": "11",
+		"question": "This Pokemon is a genderless species",
+		"answer": "Starmie"
+	},
+		{
+		"id": "12",
+		"question": "This pokemon is based on a bulky human woman",
+		"answer": "Jynx"
+	},
+		{
+		"id": "13",
+		"question": "This pokemon is based on a zodiac",
+		"answer": "Taurus"
+	},
+		{
+		"id": "14",
+		"question": "This pokemon only knows the attack Splash.",
+		"answer": "Magikarp"
+	},
+		{
+		"id": "15",
+		"question": "An experimental Pokemon cloned from Mew's cells.",
+		"answer": "Ditto"
+	},
+		{
+		"id": "16",
+		"question": "__________ has the most evolutions.",
+		"answer": "Evee"
+	},
+		{
+		"id": "17",
+		"question": "This Pokemon likes to sleep alot and is known to block roads.",
+		"answer": "Snorlax"
+	},
+		{
+		"id": "18",
+		"question": "This Pokemon was genetically engineered.",
+		"answer": "Mewtwo"
+	},
+		{
+		"id": "19",
+		"question": "This Pokemon is the mascot of the show.",
+		"answer": "Pikachu"
+	},
+		{
+		"id": "20",
+		"question": "This Pokemon puts other people and Pokemon to sleep with its voice.",
+		"answer": "Jigglypuff"
+	},
+		{
+		"id": "21",
+		"question": "This Pokemon does not have eyes.",
+		"answer": "Zubat"
+	},
+		{
+		"id": "22",
+		"question": "This Pokemon is known for getting powerful psychic headaches.",
+		"answer": "Psyduck"
+	},
+		{
+		"id": "23",
+		"question": "This is a puppy Pokemon",
+		"answer": "Growlithe"
+	},
+		{
+		"id": "24",
+		"question": "This Pokemon has a mustache",
+		"answer": "Alakazam"
+	},
+		{
+		"id": "25",
+		"question": "This Pokemon is green and hates the color red.",
+		"answer": "Scyther"
+	}
+]

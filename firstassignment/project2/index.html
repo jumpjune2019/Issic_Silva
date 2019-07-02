@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Pokemon Quiz Game</title>
+		<link rel='stylesheet' href='css/reset.css' /> 
+		<link rel='stylesheet' href='css/app.css'/>
+		<script type='text/javascript' src='js/framework.js'></script>
+		<script type='text/javascript' src="js/app.js"></script>
+	</head>
+	<body>
+		<div id='container'>
+			<div id='middle'>
+				<div id='innerContainer'>
+					<div id='content'>
+						<div class='header'>
+							<div class='header_row'>
+								<div id='title'></div>
+								<div id='elapsedTime' value="00:00:00">00:00:00</div>
+							</div>
+							<div class='clearfix'></div>						
+							<div class='headerRow'>
+								<div class='headerLeft'>
+									<div id='score'>ScoreBoard 0 of 5</div>
+									<input type="button" id='undo' value="Undo" state="undo" hidden="true"></input>
+								</div>
+								<div class='headerRight'>
+									<input type="button" id="controlButton" nextstate="lock selections" value="play" state="play"></input>
+								</div>
+							</div>
+							<div class='clearfix'></div>						
+						</div>
+						<div id="gameArea">
+							<div id="termsContainer">
+								<div class='termWidget' unselectable="on" draggable=false id='termWidget1' linkid='1'>
+								Hello!	
+								</div>
+								<div class='termWidget' unselectable="on" draggable=false id='termWidget2' linkid='2'>
+								This is a
+								</div>
+								<div class='termWidget' unselectable="on" draggable=false id='termWidget3' linkid='3'>
+								quiz game in
+								</div>
+								<div class='termWidget' unselectable="on" draggable=false id='termWidget4' linkid='4'>
+								where you match
+								</div>
+								<div class='termWidget' unselectable="on" draggable=false id='termWidget5' linkid='5'>
+								the term
+								</div></div>
+							<div id="definitionsContainer">
+								<div class='definitionWidget' unselectable="on" id='definitionWidget1' expectedLinkId='1' droppedLinkId='0'>
+									<div class='droppedTerm' unselectable="on" id='droppedTerm1'>on the left</div>
+									<div class='definitionText' unselectable="on" id='question1'>and dragging</div>
+									<div class='clearfix_no_margin'></div>
+								</div>
+								<div class='definitionWidget' unselectable="on" id='definitionWidget2' expectedLinkId='2' droppedLinkId='0'>
+									<div class='droppedTerm' unselectable="on" id='droppedTerm2'>to the question</div>
+									<div class='definitionText' unselectable="on" id='question2'>to the drop area.</div>
+									<div class='clearfix_no_margin'></div>
+								</div>
+								<div class='definitionWidget' unselectable="on" id='definitionWidget3' expectedLinkId='3' droppedLinkId='0'>
+									<div class='droppedTerm' unselectable="on" id='droppedTerm3'>or definition</div>
+									<div class='definitionText' unselectable="on" id='question3'>Start by clicking</div>
+									<div class='clearfix_no_margin'></div>
+								</div>
+								<div class='definitionWidget' unselectable="on" id='definitionWidget4' expectedLinkId='4' droppedLinkId='0'>
+									<div class='droppedTerm' unselectable="on" id='droppedTerm4'>on the right</div>
+									<div class='definitionText' unselectable="on" id='question4'>the play button</div>
+									<div class='clearfix_no_margin'></div>
+								</div>
+								<div class='definitionWidget' unselectable="on" id='definitionWidget5' expectedLinkId='5' droppedLinkId='0'>
+									<div class='droppedTerm' unselectable="on" id='droppedTerm5'>by clicking</div>
+									<div class='definitionText' unselectable="on" id='question5'>and good luck!</div>
+									<div class='clearfix_no_margin'></div>						
+								</div>
+							</div>
+						</div>					
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
