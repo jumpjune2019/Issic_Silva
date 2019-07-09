@@ -12,10 +12,12 @@ public class Main {
 
 	    System.out.println("Would you like the matrix to print on screen only(1), print on file(2), or both(3)?");
 	    Scanner scan = new Scanner(System.in);
-	    askQuestion = scan.nextLine();
+	    
 	    boolean loop = false;
 	    
 	    
+	    while(loop == false) {
+	    	askQuestion = scan.nextLine();
 	    	 try {
 		    	switch(askQuestion) {
 		    case "1":
@@ -32,16 +34,17 @@ public class Main {
 		    	matrixToFile();
 		    	loop = true;
 		    	break;
+		    default:
+		    	//loop = true;
+		    	throw new InputException();
+		    	}
+		    	
+		    }catch(InputException e) {
+		    	System.out.println("Enter only 1,2 or 3.");
+		    	continue;
 		    }
-	    	extracted();
-	    }catch(InputException e) {
-	    	System.out.println(e.getMessage());
 	    }
 	   scan.close();
-	}
-
-	private static void extracted() throws InputException {
-		throw new InputException("Enter Only 1, 2, or 3.");
 	}
 	
 	public static void matrixToConsole() {

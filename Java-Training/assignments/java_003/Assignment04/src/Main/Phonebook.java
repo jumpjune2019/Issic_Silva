@@ -10,9 +10,9 @@ public class Phonebook {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
-		String getName;
-		String getNumber;
-		String getCity;
+		String getName="";
+		String getNumber="";
+		String getCity="";
 		String getConfirmation;
 		int count = 1;
 		Scanner scan = new Scanner(System.in);
@@ -28,20 +28,53 @@ public class Phonebook {
 			System.out.println("Please enter the required information for five contacts.");
 				getConfirmation = "";
 			do {
+				boolean nameLoop= false;
+				boolean numberLoop= false;
+				boolean cityLoop= false;
 				do {
-				System.out.println("Name?");
-				getName = scan.nextLine();
-				}while(getName.isEmpty());
+					try {
+					System.out.println("Name?");
+					getName = scan.nextLine();
+					inputException(getName);
+					
+					}catch(InputException e){
+						System.out.println("You have to enter a name.");
+					}
+					if(!getName.isEmpty()) {
+						nameLoop = true;
+					}
+				}while(nameLoop == false);
 				
 				do {
-					System.out.println("Phone Number?");
-					getNumber = scan.nextLine();
-				}while(getNumber.isEmpty());
+					try {
+						System.out.println("Phone Number?");
+						getNumber = scan.nextLine();
+						inputException(getNumber);
+						
+						}catch(InputException e){
+							System.out.println("You have to enter a phone number.");
+						}
+						if(!getNumber.isEmpty()) {
+							numberLoop = true;
+						}
+				}while(numberLoop == false);
 			    
 				do {
-					System.out.println("City?");
-			    getCity = scan.nextLine();
-				}while(getCity.isEmpty());
+					try {
+						System.out.println("City?");
+						getCity = scan.nextLine();
+						inputException(getCity);
+						
+						}catch(InputException e){
+							System.out.println("You have to enter a City.");
+							//loop = true;
+					    	//continue;
+						}
+						if(!getCity.isEmpty()) {
+							cityLoop = true;
+						}
+				}while(cityLoop == false);
+				
 			    System.out.println("You have entered, Name: " + getName + " Phone Number: " + getNumber + " City: " + getCity);
 			    System.out.println("Confirm entry.(Y for yes)");
 			    getConfirmation = scan.nextLine();
@@ -78,8 +111,10 @@ public class Phonebook {
 		scan.close();
 	}
 	
-	private static void extracted() throws InputException {
-		throw new InputException("You must enter something.");
+	static void inputException(String string) throws InputException{
+		if(string.isEmpty()) {
+			throw new InputException();
+			}
 	}
 	
 	//was trying to do it in a function for more practice for functions but could not figure it out
