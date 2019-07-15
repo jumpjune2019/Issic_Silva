@@ -1,0 +1,12 @@
+import java.util.TimerTask;
+
+public class Timer extends TimerTask {
+
+	public static int i = 0;
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		System.out.println("Timer ran " + ++i);
+	}
+
+}

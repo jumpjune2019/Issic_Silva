@@ -1,0 +1,105 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class MyThread implements Runnable {
+
+	Thread threadName;
+	static boolean stopped;
+	static boolean suspended;
+	
+	
+	TrafficLight l1 = TrafficLight.GREEN;
+	TrafficLight l2 = TrafficLight.YELLOW;
+	TrafficLight l3 = TrafficLight.RED;
+	
+	
+	MyThread(String name){
+		threadName = new Thread(this, name);
+		stopped = false;
+		suspended = false;
+		threadName.start();
+	}
+	
+	
+	
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		while(true) {
+			synchronized(this) {
+				if(stopped) {
+					break;
+				}
+			}//synchronized end
+			System.out.println("Light is " + l1 + " - Go!");
+			try {
+				Thread.sleep(l1.getSeconds()*1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	// Stop the thread.
+	synchronized void myStop() {
+		stopped = true;
+		suspended = false;
+		notify();
+	}
+	// Suspend the thread.
+	synchronized void mysuspend() {
+		suspended = true;
+	}
+	// Resume the thread.
+	synchronized void myresume() {
+		suspended = false;
+		notify();
+	}
+	
+	public void setLight(int input) {
+		
+		if(input == 1) {
+			System.out.println("Light is " + l1 + " - Go!");
+		}else if(input == 2) {
+			System.out.println("Light is " + l2 + " - Beware!");
+		}else if(input == 3) {
+			System.out.println("Light is " + l3 + " - Stop!");
+		}//end of if-else statements
+	}//end setLight
+
+
+
+
+	public void sleep(String name) {
+		// TODO Auto-generated method stub
+		if(name == "green") {
+			try {
+				Thread.sleep(l1.getSeconds()*1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}
+		if(name == "yellow") {
+			try {
+				Thread.sleep(l2.getSeconds()*1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}
+		if(name == "red") {
+			try {
+				Thread.sleep(l3.getSeconds()*1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}
+	}
+	
+	
+	
+
+}

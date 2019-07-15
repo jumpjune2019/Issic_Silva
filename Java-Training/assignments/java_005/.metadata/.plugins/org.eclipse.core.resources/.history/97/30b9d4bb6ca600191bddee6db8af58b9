@@ -1,0 +1,43 @@
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class Main {
+
+	static int counter = 10;
+	static Timer timer;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		
+
+		MyThread greenThread = new MyThread("green");
+		
+		TimerTask timerTask = new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				counter--;
+			}
+			
+			
+		};
+		
+		Scanner scan = new Scanner(System.in);
+		String endProgram = null;
+		
+		do {
+			greenThread.setLight(1);
+			
+		}while(true);
+		
+//		if(counter == 0) {
+//			greenThread.myStop();
+//			System.out.println("Traffic Light Simulator is Done!");
+//		}
+	}
+
+}

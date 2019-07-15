@@ -1,0 +1,21 @@
+import java.util.TimerTask;
+
+public class LightTimer extends TimerTask {
+
+	public static int i = 0;
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		//System.out.println("Timer ran " + ++i);
+		++i;
+		if(i > 8) {
+			i = 0;
+		}
+	}
+	
+	public int getInt() {
+		
+		return i;
+	}
+
+}

@@ -1,0 +1,12 @@
+//Traffic Light Simulator
+//Issic Silva
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		TrafficLightThread mainThread = new TrafficLightThread("");
+	}
+
+}

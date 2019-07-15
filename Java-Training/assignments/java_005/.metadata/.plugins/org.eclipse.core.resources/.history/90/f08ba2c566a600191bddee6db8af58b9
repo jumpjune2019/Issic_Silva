@@ -1,0 +1,56 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class MyThread implements Runnable {
+
+	Thread threadName;
+	static boolean stopped;
+	static int counter = 10;
+	static Timer timer;
+	
+	
+	MyThread(String name){
+		threadName = new Thread(this, name);
+		stopped = false;
+		threadName.start();
+	}
+	
+	TimerTask timerTask = new TimerTask() {
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			counter--;
+		}
+		
+	};
+	
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+		timer = new Timer("MyTimer");//create a new timer
+        timer.scheduleAtFixedRate(timerTask, 10, 1000);
+        
+		while(true) {
+			synchronized(this) {
+				if(stopped) {
+					break;
+				}
+			}//synchronized end
+		System.out.println(counter);
+		 if(counter == 0) {
+			 counter = 10;
+		 }
+		}
+	}
+	
+	synchronized static void myStop() {
+		stopped = true;
+		//notify();
+	}
+	
+	
+
+}

@@ -1,0 +1,47 @@
+TrafficLight Simulator by Issic Silva
+
+The objective is to create a console based program to simulate the changing of traffic lights from green,
+to yellow, to red, and back to green. The lights will be represented by a phrase for each light. The program will
+end when the user pushes enter.
+
+The file containing the final version is Traffic Light Simulator v2, Traffic Light Simulator functions like the
+above description but uses only one thread. Traffic Light Simulator v2 uses three threads.
+
+In addition to using multiple threads, synchronization and enum is also a requirement.
+
+Traffic Light Simulator contains three java files. Main.java holds the main method and is where the program is run
+from. TrafficLightThread.java is the thread class and methods, and TrafficLight.java is the enum class.
+
+TrafficLight.java contains the enum called TrafficLight and holds the colors Green, Yellow, and Red to represent
+the colors of a traffic light. In addition each color also hold the value of when the light will change in a ten
+second interval. Green will remain green for 5 seconds and so i assigned the number 5. Yellow will remain yellow
+for 2 seconds and so was assigned the number 7 as 7 is two seconds after 5. Red will remain red for 3 seconds and
+is assigned the final number in the interval which is 10.
+In addition to the enum the enum class also contains a method for getting the seconds for each light, called
+getSeconds().
+
+TrafficLightThread.java determines the properties of the thread object. It implements Runnable meaning that
+any thread object will begin to run as soon as it is created once the program is run. This class contains the
+run(), mystop(), getLight(), and sleep() methods. The method myStop() will terminate a thread when called.
+getLight() is passed the color of a method and prints out the designated phrase for that color. sleep() is passed
+the name of a color and will put that method to sleep for the intended duration depending on the color. There are
+also three variables each assigned an enum Green, Yellow, and Red and these variables are used in the getLight()
+when the phrase is printed.
+
+Main.java contains the main method where the program begins. Three thread obejects from the TrafficLightThread class
+are created, followed by a BufferedReader to listen for user input. The enum class is called again to create three
+TrafficLight objects. A timer was also implemented which counts from 1 to 10 representing the total amount of time
+it takes for the simulated traffic light to change between green, yellow, and red. Inside a do-while statement a
+series of if-statements compare the timer in seconds for a match with the second for one of the designated lights.
+when the timer reaches the 5th second for example one of the if statements gets a match for the number 5 assigned to
+enum representing the green light. l1.getSeconds() is called to retrieve that number 5. Since both fives are a match
+the program enters the block inside the if-statement where it calls the getLight() and sleep() from the
+TrafficLightThread class. getLight() will print to the console the phrase "Light is GREEN - Go!" and sleep() puts
+that thread to sleep immeditately after so the phrase is only printed once during the brief interval where the timer
+is at the 5th iteration. Before and in between each of these if-statements there is also another if-statement which
+listends for input from the user. should the user push the enter key the program will go into the if-statement which
+then immediately encounters a break statement which causes the program to leave the do-while loop. Immediately
+there after all three threads are terminated using myStop(). The timer is terminated using cancel() which is dervied
+the Timer class that was imported. The bufferedReader is closed so the timer stops counting. the message "Traffic
+Light Simulator is Done!" is printed to the console indicating that the program is finished. The last line
+System.exit(0) ensures that the program is entirely terminated. 

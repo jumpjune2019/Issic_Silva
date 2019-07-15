@@ -1,12 +1,8 @@
-import java.io.*;
-import java.awt.BorderLayout;
-import java.awt.Container;
+import java.awt.Frame;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
- 
 import javax.swing.JFrame;
 import javax.swing.JRootPane;
-import javax.swing.JTextField;
 
 public class Main {
 	
@@ -38,13 +34,11 @@ public class Main {
 				@Override
 				public void keyPressed(KeyEvent e) {
 					// TODO Auto-generated method stub
-					
 				}
 
 				@Override
 				public void keyReleased(KeyEvent e) {
 					// TODO Auto-generated method stub
-					
 				}
 				
 				 public void setFrame(JFrame frame) {
@@ -83,35 +77,26 @@ public class Main {
 
 	public static void main(String[] args) throws Exception{
 		
-		char input = ' ';
-		
-		
-		
 		System.out.println("Main thread is starting");
 		MyThread currentThread = null;
-		MyThread firstThread = new MyThread("1");
-		MyThread secondThread = new MyThread("2");
-		MyThread thirdThread = new MyThread("3");
-		MyThread fourthThread = new MyThread("4");
-		MyThread fifthThread = new MyThread("5");
+		MyThread threadArr[] = new MyThread[5];
 		
-		Frame frame = new Frame();
-		input = getCh();
-		input = Character.toUpperCase(input);
-		System.out.println("this has" + input);
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		for(int i=0; i < 5; i++) {
+			threadArr[i] = new MyThread(Integer.toString(i+1));
+		}
+
 		int counter = 5;
 		int takeControl = 0;
+		char input = ' ';
+		
 
 		boolean firstTimeThrough = true;
-		
-		//input = br.readLine();
-		
+				
 		do {
 			
 			try {
 				if(counter != 0) {
+					//input = br.readLine().toUpperCase();
 					input = getCh();
 					input = Character.toUpperCase(input);
 				}else {
@@ -119,35 +104,16 @@ public class Main {
 				}
 	
 				switch(input) {
-				
-				
+							
 					case '1':{
 						
-						
 						if(firstTimeThrough == true) {
-							currentThread = firstThread;
+							currentThread = threadArr[0];
 							firstTimeThrough = false;
 						}
 						
-	
-						if(takeControl == 1) {
-							
-							if(currentThread == firstThread) {
-								
-								if(currentThread.isSuspended()) {
-									currentThread.myResume();
-								}else {
-									currentThread.mySuspend();
-								}//end innermost if
-								
-							}//end second if
-							
-						}else {
-							System.out.println("Controlling thread 1");
-							currentThread = firstThread;
-							takeControl = 1;
-						}
-					
+						currentThread = threadControl(takeControl, currentThread, threadArr, Character.getNumericValue(input));
+						takeControl = 1;
 						
 						break;
 					}//end case 1
@@ -156,59 +122,24 @@ public class Main {
 						
 						
 						if(firstTimeThrough == true) {
-							currentThread = secondThread;
+							currentThread = threadArr[1];
 							firstTimeThrough = false;
 						}
 						
-						
-						if(takeControl == 2) {
-							
-							if(currentThread == secondThread) {
-								
-								if(currentThread.isSuspended()) {
-									currentThread.myResume();
-								}else {
-									currentThread.mySuspend();
-									
-								}//end innermost if
-								
-							}//end second if
-							
-						}else {
-							System.out.println("Controlling thread 2");
-							currentThread = secondThread;
-							takeControl = 2;
-						}
-						
-						
+						currentThread = threadControl(takeControl, currentThread, threadArr, Character.getNumericValue(input));
+						takeControl = 2;	
 						break;
 					}
 					
 					case '3':{
 						
 						if(firstTimeThrough == true) {
-							currentThread = thirdThread;
+							currentThread = threadArr[2];
 							firstTimeThrough = false;
 						}
 						
-						if(takeControl == 3) {
-							
-							if(currentThread == thirdThread) {
-								
-								if(currentThread.isSuspended()) {
-									currentThread.myResume();
-								}else {
-									currentThread.mySuspend();
-									
-								}//end innermost if
-								
-							}//end second if
-							
-						}else {
-							System.out.println("Controlling thread 3");
-							currentThread = thirdThread;
-							takeControl = 3;
-						}
+						currentThread = threadControl(takeControl, currentThread, threadArr, Character.getNumericValue(input));
+						takeControl = 3;
 						
 						
 						break;
@@ -216,60 +147,26 @@ public class Main {
 					case '4':{
 						
 						if(firstTimeThrough == true) {
-							currentThread = fourthThread;
+							currentThread = threadArr[3];
 							firstTimeThrough = false;
 						}
 						
 						
-						if(takeControl == 4) {
-							
-							if(currentThread == fourthThread) {
-								
-								if(currentThread.isSuspended()) {
-									currentThread.myResume();
-								}else {
-									currentThread.mySuspend();
-									
-								}//end innermost if
-								
-							}//end second if
-							
-						}else {
-							System.out.println("Controlling thread 4");
-							currentThread = fourthThread;
-							takeControl = 4;
-						}
+						currentThread = threadControl(takeControl, currentThread, threadArr, Character.getNumericValue(input));
+						takeControl = 4;
 						
 						break;
 					}
 					case '5':{
 						
 						if(firstTimeThrough == true) {
-							currentThread = fifthThread;
+							currentThread = threadArr[4];
 							firstTimeThrough = false;
 						}
 						
-						
-						if(takeControl == 5) {
+						currentThread = threadControl(takeControl, currentThread, threadArr, Character.getNumericValue(input));
+						takeControl = 5;				
 							
-							if(currentThread == fifthThread) {
-								
-								if(currentThread.isSuspended()) {
-									currentThread.myResume();
-								}else {
-									currentThread.mySuspend();
-									
-								}//end innermost if
-								
-							}//end second if
-							
-						}else {
-							System.out.println("Controlling thread 5");
-							currentThread = fifthThread;
-							takeControl = 5;
-						}					
-						
-						
 						break;
 					}
 					
@@ -281,48 +178,10 @@ public class Main {
 							System.out.println();
 							counter--;
 							currentThread.myStop();
-							
-	
-							if(firstThread.isMyThreadAlive() && !currentThread.getMyName().equals("1")) {
-								if(firstThread.isSuspended()) {
-									System.out.println("thread 1: paused");
-								}else {
-									System.out.println("thread 1: running");
-								}
-							}
-							if(secondThread.isMyThreadAlive() && !currentThread.getMyName().equals("2")) {
-								if(secondThread.isSuspended()) {
-									System.out.println("thread 2: paused");
-								}else {
-									System.out.println("thread 2: running");
-								}
-							}
-							if(thirdThread.isMyThreadAlive() && !currentThread.getMyName().equals("3")) {
-								if(thirdThread.isSuspended()) {
-									System.out.println("thread 3: paused");
-								}else {
-									System.out.println("thread 3: running");
-								}							}
-							if(fourthThread.isMyThreadAlive() && !currentThread.getMyName().equals("4")) {
-								if(fourthThread.isSuspended()) {
-									System.out.println("thread 4: paused");
-								}else {
-									System.out.println("thread 4: running");
-								}
-							}
-							if(fifthThread.isMyThreadAlive() && !currentThread.getMyName().equals("5")) {
-								
-								if(fifthThread.isSuspended()) {
-									System.out.println("thread 5: paused");
-								}else {
-									System.out.println("thread 5: running");
-								}
-							}
-							
-					
+							printStatus(threadArr, currentThread);
+											
 						}//end big if
-						
-						
+							
 						break;
 						
 					}//end case S
@@ -331,8 +190,6 @@ public class Main {
 						
 						if(currentThread != null) {
 							currentThread.setMyThreadPriority("T");
-							//System.out.println("The current thread is:" + currentThread.getMyName());
-							//System.out.println("Priority is: " + currentThread.getMyThreadPriority());
 						}
 						break;
 						
@@ -342,8 +199,6 @@ public class Main {
 						
 						if(currentThread != null) {
 							currentThread.setMyThreadPriority("N");
-							//System.out.println("The current thread is:" + currentThread.getMyName());
-							//System.out.println("Priority is: " + currentThread.getMyThreadPriority());
 						}
 						break;
 						
@@ -353,8 +208,6 @@ public class Main {
 						
 						if(currentThread != null) {
 							currentThread.setMyThreadPriority("L");
-							//System.out.println("The current thread is:" + currentThread.getMyName());
-							//System.out.println("Priority is: " + currentThread.getMyThreadPriority());
 						}
 						break;
 						
@@ -363,9 +216,7 @@ public class Main {
 					default:{
 						throw new WrongInputException();
 					}
-					
-				
-				
+												
 				}//end switch statement
 			
 			}catch(WrongInputException e) {
@@ -375,23 +226,19 @@ public class Main {
 				continue;
 			}
 			
+		}while(allAlive(threadArr));
 
 			
-		}while(allAlive(firstThread, secondThread, thirdThread, fourthThread, fifthThread));
-		
-		
 		System.out.println("Main thread terminating");
 		
 	}//end main
 
 	
-	
-	
-	public static boolean allAlive(MyThread one, MyThread two, MyThread three, MyThread four, MyThread five) {
+	public static boolean allAlive(MyThread[] threadArr) {
 		
 		boolean flag = false;
 		
-		if(one.isMyThreadAlive() || two.isMyThreadAlive() || three.isMyThreadAlive() || four.isMyThreadAlive() || five.isMyThreadAlive()) {
+		if(threadArr[0].isMyThreadAlive() || threadArr[1].isMyThreadAlive() || threadArr[2].isMyThreadAlive() || threadArr[3].isMyThreadAlive() || threadArr[4].isMyThreadAlive()) {
 			flag = true;
 		}
 		
@@ -399,7 +246,48 @@ public class Main {
 		
 	}//end allAlive
 	
+	public static MyThread threadControl(int takeControl, MyThread currentThread, MyThread[] threadArr, int caseNum) {
+						
+		if(takeControl == caseNum) {
+			//System.out.println("currentThread: " + currentThread.getMyName());
+			if(currentThread.equals(threadArr[caseNum-1])) {
+				
+				if(currentThread.isSuspended()) {
+					currentThread.myResume();
+				}else {
+					currentThread.mySuspend();
+					
+				}//end innermost if
+				
+			}
+			
+		}else {
+			currentThread = threadArr[caseNum-1];
+			System.out.println("Controlling thread " + currentThread.getMyName());	
+		}//end outer if/else	
 		
-
+		return currentThread;
+		
+	}//end threadControl
 	
+	public static void printStatus(MyThread[] threadArr, MyThread currentThread) {
+		
+		String temp;
+		
+		for(int i=0; i < 5; i++) {
+			
+			temp = Integer.toString(i+1);
+			if(threadArr[i].isMyThreadAlive() && !currentThread.getMyName().equals(temp)) {
+				
+				if(threadArr[i].isSuspended()) {
+					System.out.println("thread " + (i+1) + ": paused");
+				}else {
+					System.out.println("thread " + (i+1) + ": running");
+				}
+				
+			}
+			
+		}//end for loop
+		
+	}//end printStatus
 }//end class

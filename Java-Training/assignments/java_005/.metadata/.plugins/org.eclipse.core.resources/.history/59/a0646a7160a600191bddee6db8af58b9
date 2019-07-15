@@ -1,0 +1,20 @@
+
+public class MyThread implements Runnable {
+
+	Thread threadName;
+	static int counter = 0;
+	
+	MyThread(String name){
+		threadName = new Thread(this, name);
+		threadName.start();
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		counter++;
+		
+		System.out.println(counter * 1000);
+	}
+
+}

@@ -1,0 +1,92 @@
+package Main;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		@SuppressWarnings("resource")
+		Scanner scan = new Scanner(System.in);
+		boolean playAgain = false;
+		boolean askOnlyOnce = false;
+		String throwDie = null;
+		
+		do {
+			
+			//boolean to ask to quit only once
+			if(askOnlyOnce == false) {
+			System.out.println("Welcome to the dice throw challenge!");
+			System.out.println("Do you feel lucky? Punk... Do ya?");
+			System.out.println("Press any key and Enter to throw your dice or press (Q or q) to chicken your butt off...)");
+			throwDie = scan.nextLine();
+			askOnlyOnce = true;
+			}
+			
+				//if program not terminated throw die and continue
+				if(throwDie.equalsIgnoreCase("q")) {
+					System.out.println("Program Terminated.");
+					System.exit(0);
+				}else {
+					
+					int playerDie1 = 0;
+					int playerDie2 = 0;
+					
+					int computerDie1 = 0;
+					int computerDie2 = 0;
+					
+					System.out.println("Rolling the dice!!");
+					
+					
+					
+					//call method to roll each die
+				    playerDie1 = throwDie(playerDie1);
+				    playerDie2 = throwDie(playerDie2);
+				    
+				    computerDie1 = throwDie(computerDie1);
+				    computerDie2 = throwDie(computerDie2);
+				    
+				    int playerTotal = playerDie1 + playerDie2;
+				    int computerTotal = computerDie1 + computerDie2;
+				    
+					if(playerTotal > computerTotal) {
+						System.out.println("Player wins, player total is: " + playerTotal + " and computer total is: " + computerTotal);
+					}else if (computerTotal > playerTotal) {
+						System.out.println("Computer wins, computer total is: " + computerTotal + " and player total is:" + playerTotal);
+					}else {
+						System.out.println("It's a tie. Results: " + playerTotal + ", " + computerTotal);
+						if(playerDie1 == playerDie2 & computerDie1 != computerDie2) {
+							System.out.println("Player has the double and wins.");
+						}else if(computerDie1 == computerDie2 & computerDie1 != computerDie2) {
+							System.out.println("Player has the double and wins.");
+						}else {
+							System.out.println("It's a stalemate!");
+						}
+					}
+				
+					System.out.println("Play Again? Push Y to play again, any other key to Quit.");
+					String input = scan.nextLine();
+					//condition to end loop if user does not want to play again.
+					if(!input.equalsIgnoreCase("y")) {
+						playAgain = true;
+				}
+			}
+			
+			}while(!playAgain);
+	}
+	
+	//method to simulate rolling one die 
+	public static  int throwDie(int result){
+		
+		int max = 6;
+		int min = 1;
+		
+		int range = max-min +1;
+		
+		int rand = (int)(Math.random() * range) + min;
+		
+		return rand;
+		
+	}
+
+}

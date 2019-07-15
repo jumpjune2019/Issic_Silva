@@ -1,0 +1,27 @@
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+
+//Traffic Light Simulator
+//Issic Silva
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		GreenLightThread greenThread = new GreenLightThread("green");
+		YellowLightThread yellowThread = new YellowLightThread("yellow");
+		RedLightThread redThread = new RedLightThread("red");
+		
+		Scanner scan = new Scanner(System.in);
+		
+		while (!(scan.nextLine().equals("")));
+		
+		greenThread.myStop();
+		yellowThread.myStop();
+		redThread.myStop();
+		System.out.println("Traffic Light Simulator is Done!");
+	}
+
+}

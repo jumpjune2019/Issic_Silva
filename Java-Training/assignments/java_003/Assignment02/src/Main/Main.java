@@ -28,7 +28,6 @@ public class Main {
 		    	matrixToFile();
 		    	loop = true;
 		    	break;
-		    	
 		    case "3":
 		    	matrixToConsole();
 		    	matrixToFile();

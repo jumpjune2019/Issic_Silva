@@ -1,0 +1,12 @@
+import java.util.Timer;
+
+public class TrafficTimer {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Timer timer = new Timer();
+		
+	}
+
+}

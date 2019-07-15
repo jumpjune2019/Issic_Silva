@@ -1,0 +1,50 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Timer;
+import java.util.TimerTask;
+
+//Traffic Light Simulator
+//Issic Silva
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+
+		TrafficLightThread greenThread = new TrafficLightThread("green");
+		TrafficLightThread yellowThread = new TrafficLightThread("yellow");
+		TrafficLightThread redThread = new TrafficLightThread("red");
+		
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+		
+//		TrafficLight l1 = TrafficLight.GREEN;
+//		TrafficLight l2 = TrafficLight.YELLOW;
+//		TrafficLight l3 = TrafficLight.RED;
+		
+		boolean stop = true;
+		
+		do {
+			if() {
+				
+			}
+			greenThread.getLight("green");
+			greenThread.mysuspend();
+			if(bufferedReader.ready()) {
+				break;
+			}
+			yellowThread.getLight("yellow");
+			redThread.getLight("red");
+			
+		}while(stop);
+		
+		
+		greenThread.myStop();
+		yellowThread.myStop();
+		redThread.myStop();
+		bufferedReader.close();
+		System.out.println("Traffic Light Simulator is Done!");
+		
+	}
+
+}

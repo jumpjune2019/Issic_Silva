@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class InputThread implements Runnable {
+
+	Thread input;
+	static boolean stopped;
+	Scanner scan = new Scanner(System.in);
+	
+	InputThread(String name){
+		input = new Thread(this, name);
+		stopped = false;
+		input.start();
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		String input = scan.next();
+        if (input.isEmpty())
+        {
+            System.out.println("Pressed");
+            
+        }
+		while(true) {
+			synchronized(this) {
+				if(stopped) {
+					break;
+				}
+			}//synchronized end
+			
+		}// while end
+		
+	}//end run
+	
+	synchronized static void myStop() {
+		stopped = true;
+		//notify();
+	}
+	
+	public void detectInput() {
+		
+	}
+
+}

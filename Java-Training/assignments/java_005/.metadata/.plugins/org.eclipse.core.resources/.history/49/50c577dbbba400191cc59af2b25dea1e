@@ -1,0 +1,14 @@
+
+enum TrafficLight {
+	GREEN(5), YELLOW(2), RED(3);
+	
+	private int seconds;
+	
+	TrafficLight(int s){
+		seconds = s;
+	}
+	
+	int getSeconds() {
+		return seconds;
+	}
+}

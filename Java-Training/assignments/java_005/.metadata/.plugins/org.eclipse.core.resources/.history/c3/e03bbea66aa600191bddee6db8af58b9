@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		MyThread greenThread = new MyThread("green");
+		
+		Scanner scan = new Scanner(System.in);
+		
+		
+		String endProgram = scan.nextLine();
+		
+		if(endProgram.isEmpty()) {
+			greenThread.myStop();
+			System.out.println("Traffic Light Simulator is Done!");
+		}
+	}
+
+}

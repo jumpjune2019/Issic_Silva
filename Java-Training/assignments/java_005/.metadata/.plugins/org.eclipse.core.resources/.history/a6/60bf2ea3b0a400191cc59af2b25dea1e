@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+//Traffic Light Simulator
+//Issic Silva
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner scan = new Scanner(System.in);
+		
+		String endProgram = scan.nextLine();
+		
+		TrafficLightThread mainThread = new TrafficLightThread("");
+		
+		if(endProgram.isEmpty()) {
+			TrafficLightThread.myStop();
+		}
+	}
+
+}

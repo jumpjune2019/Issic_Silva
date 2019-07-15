@@ -1,0 +1,61 @@
+import java.util.Scanner;
+import java.util.TimerTask;
+
+public class TrafficLightThread extends TimerTask implements Runnable {
+	
+	Thread thread;
+	static boolean stopped;
+	TrafficLight l1 = TrafficLight.GREEN;
+	TrafficLight l2 = TrafficLight.YELLOW;
+	TrafficLight l3 = TrafficLight.RED;
+	
+	Scanner scan = new Scanner(System.in);
+	
+	TrafficLightThread(String name){
+		thread = new Thread(this, name);
+		stopped = false;
+		thread.start();
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+		while(true) {
+			synchronized(this) {
+				if(stopped) {
+					break;
+				}
+			}//synchronized end
+			
+		}// while end
+		
+	}//end run
+	
+	synchronized static void myStop() {
+		stopped = true;
+		//notify();
+	}
+	
+	
+	public void setLight(int input) {
+		
+		if(input == 1) {
+			System.out.println("Light is " + l1 + " - Go!");
+		}else if(input == 2) {
+			System.out.println("Light is " + l2 + " - Beware!");
+		}else if(input == 3) {
+			System.out.println("Light is " + l3 + " - Stop!");
+		}//end of if-else statements
+	}//end setLight
+	
+	public void detectInput() {
+		 String input = scan.next();
+		 System.out.println("Pressed");
+		 if (!input.isEmpty())
+		 {
+             System.out.println("input isnt empty");
+		 }
+	}//end of detecInput
+
+}//end class

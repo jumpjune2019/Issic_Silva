@@ -1,0 +1,14 @@
+
+public class Main {
+	
+	
+
+	public static void main(String[] args) {
+		Integer nums[] = { 1, 2, 3, 4, 5 };
+		
+		if(Generics.arraysEqual(nums, nums)) {
+			System.out.println("nums equals nums");	
+		}
+	}
+
+}

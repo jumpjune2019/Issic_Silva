@@ -1,0 +1,99 @@
+package Main;
+
+import java.util.Scanner;
+
+public class Phonebook {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String getName;
+		String getNumber;
+		String getCity;
+		String getConfirmation;
+		int count = 1;
+		Scanner scan = new Scanner(System.in);
+		String[][] array = new String[3][5];
+		
+		do {
+			System.out.println("This is a phonebook application.");
+			System.out.println("Please enter the required information for five contacts.");
+				getConfirmation = "";
+			do {
+				System.out.println("Name?");
+			    getName = scan.nextLine();
+			    System.out.println("Phone Number?");
+			    getNumber = scan.nextLine();
+			    System.out.println("City?");
+			    getCity = scan.nextLine();
+			    
+			    System.out.println("You have entered, Name: " + getName + " Phone Number: " + getNumber + " City: " + getCity);
+			    System.out.println("Confirm entry.(Y for yes)");
+			    getConfirmation = scan.nextLine();
+			    
+			}while(!getConfirmation.equalsIgnoreCase("y"));
+			array = enterInformation(getName, getNumber, getCity, count);
+			count++;
+		}while(count <= 5);
+		
+		for(int i = 0; i < 5; i++){
+	        for(int j = 0; j < 3; j++){
+	            System.out.print(array[i][j]);
+	        }
+	        System.out.println();
+	    }
+	}
+	
+public static String[][] enterInformation(String name, String number, String city, int count) {
+		
+		final int columns = 6;
+	    final int rows = 6;
+		
+	    String[][] phoneBook = new String[columns][rows];
+	    phoneBook[0][0] = "Name ";
+	    phoneBook[0][1] = "Phone ";
+	    phoneBook[0][2] = "City ";
+	  
+//	    phoneBook[1][0] = "";
+//	    phoneBook[1][1] = "";
+//	    phoneBook[1][2] = "";
+//	    
+//	    
+//	    phoneBook[2][0] = "";
+//	    phoneBook[2][1] = "";
+//	    phoneBook[2][2] = "";
+//	   
+//	    
+//	    phoneBook[3][0] = "";
+//	    phoneBook[3][1] = "";
+//	    phoneBook[3][2] = "";
+//	   
+//	    
+//	    phoneBook[4][0] = "";
+//	    phoneBook[4][1] = "";
+//	    phoneBook[4][2] = "";
+//	   
+//	    
+//	    phoneBook[5][0] = "";
+//	    phoneBook[5][1] = "";
+//	    phoneBook[5][2] = "";
+	   	    
+	   System.out.println(count);
+	    
+	    
+	    for(int i = count; i <= 5; i++){
+	        for(int j = 0; j < columns; j++){
+	            phoneBook[i][j++] = name;
+	            phoneBook[i][j++] = number;
+	            phoneBook[i][j] = city;
+	            //System.out.println(phoneBook[i][j]);
+	           //System.out.println(i);
+	           //System.out.println(j);
+	        }
+	        //System.out.println();
+	    }
+	    
+	    return phoneBook;
+	}
+
+}

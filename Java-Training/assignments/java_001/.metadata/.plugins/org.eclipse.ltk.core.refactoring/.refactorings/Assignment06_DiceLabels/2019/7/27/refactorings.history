@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;newArray&apos; in &apos;Main.Main.main(...)&apos; to &apos;diceLabelArray&apos;&#x0D;&#x0A;- Original project: &apos;Assignment06_DiceLabels&apos;&#x0D;&#x0A;- Original element: &apos;Main.Main.main(String[]).newArray&apos;&#x0D;&#x0A;- Renamed element: &apos;newArray&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;newArray&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;Main{Main.java[Main~main~\[QString;@newArray!177!224!188!195!\[\[QString;!0!false" name="diceLabelArray" references="true" stamp="1562363105953" version="1.0"/>
+</session>
