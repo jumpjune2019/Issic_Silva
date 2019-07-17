@@ -1,0 +1,25 @@
+package headortail;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		RandomNumber random = () -> (int)( Math.floor( Math.random() + 1.5 ) );
+		
+		System.out.println(random.onetwo());
+		
+		HeadOrTail result = (number) -> {
+			boolean flip;
+			if(number == 2) {
+				flip = true;
+			}else {
+				flip = false;
+			}
+			return flip;
+		};
+		
+		System.out.println(result.decide(random.onetwo()));
+	}
+
+}

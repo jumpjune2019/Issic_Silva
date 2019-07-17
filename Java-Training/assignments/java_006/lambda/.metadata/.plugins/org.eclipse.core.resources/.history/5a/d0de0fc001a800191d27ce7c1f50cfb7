@@ -1,0 +1,5 @@
+package stringarrayutilities_refactored;
+
+public interface MyTest {
+		boolean arrayHasExactMatch(String [] structure, String search, boolean test);
+}

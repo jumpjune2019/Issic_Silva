@@ -1,0 +1,55 @@
+package basicSorting;
+
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int numArr[] = { 10, 3, 4, 15, 7, 9, 1, 21 };
+		
+		String strArr[] = {"claude", "Phil", "lois", "clark", "Arthur", "Mera", "bruce"};
+		
+		IntergerSort intSort = (array, order) -> {
+			Integer[] what = Arrays.stream( numArr ).boxed().toArray( Integer[]::new );
+			//Integer[] ever = IntStream.of( numArr ).boxed().toArray( Integer[]::new );
+			Generics.selectionSort(what);
+	        System.out.println("\nSelection sort:");
+	        Generics.printArray(what);
+			return what;
+		};
+		
+		
+		
+		
+		
+		//System.out.println(intSort.sort(numArr));
+//		System.out.println();
+//		Generics.selectionSort(numArr);
+//		System.out.println();
+		
+		
+//        
+//        System.out.println("\nSelection sort:");
+//        Generics.selectionSort(strArr);
+//        Generics.printArray(strArr);
+//        
+//        Generics.selectionSortDecending(numArr);
+//        System.out.println("\nSelection sort:");
+//        Generics.printArray(numArr);
+//        System.out.println("\nSelection sort:");
+//        Generics.selectionSortDecending(strArr);
+//        Generics.printArray(strArr);
+//        System.out.println();
+//        System.out.println("\nSelection sort case insensitive:");
+//        Generics.selectionSortCaseInsensitive(strArr);
+//        Generics.printArray(strArr);
+//        System.out.println();
+//        System.out.println("\nSelection sort case insensitive:");
+//        Generics.selectionSortDecendingCaseInsensitive(strArr);
+//        Generics.printArray(strArr);
+	}
+
+}

@@ -1,0 +1,5 @@
+package stringarrayutilities_refactored;
+
+public interface BooleanInterface {
+		boolean test(String [] structure, String search, boolean test);
+}

@@ -1,0 +1,23 @@
+package basicSorting;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Integer numArr[] = { 10, 3, 4, 15, 7, 9, 1, 21 };
+		
+		String strArr[] = {"claude", "Phil", "lois", "clark", "Arthur", "Mera", "bruce"};
+		
+		
+//		System.out.println();
+//		Generics.selectionSort(numArr);
+//		System.out.println();
+		
+		Generics.selectionSort(numArr);
+        System.out.println("\nSelection sort:");
+        Generics.printArray(numArr);
+        Generics.printArray(strArr);
+	}
+
+}

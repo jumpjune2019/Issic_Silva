@@ -1,0 +1,10 @@
+package basicSorting;
+
+public class Main {
+
+	public static void main(StringSort[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

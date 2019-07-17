@@ -1,0 +1,27 @@
+package stringarrayutilities_refactored;
+
+public class MatchArray {
+
+	static boolean arrayHasExactMatch(String [] structure, String search, boolean test) {
+		
+		String lookFor = search;
+		String [] temp = structure;
+		boolean check = test;
+		boolean result = false;
+		
+		for(int i = 0; i < temp.length; i++) {
+			//if false then capitalization matters, else it does not
+			if(check == false) {
+				lookFor= lookFor.substring(0,1).toUpperCase() + lookFor.substring(1).toLowerCase();
+				if(lookFor.equals(temp[i])) {
+					result = true;
+				}
+			}else {
+				if(lookFor.equals(temp[i])) {
+					result = true;
+				}
+			}
+		}
+		return result;
+	}
+}
