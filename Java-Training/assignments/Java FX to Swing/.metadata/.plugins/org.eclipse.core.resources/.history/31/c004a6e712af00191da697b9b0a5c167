@@ -1,0 +1,52 @@
+import java.awt.event.*; 
+import java.awt.*; 
+import javax.swing.*; 
+
+class Main extends JFrame  
+{ 
+      
+    //frame 
+    static JFrame frame; 
+      
+    //lists 
+    static JList list; 
+   
+  
+    //main class 
+    public static void main(String[] args) 
+    { 
+        //create a new frame  
+        frame = new JFrame("frame"); 
+          
+        //create a object 
+        Main s=new Main(); 
+        
+        //create a panel 
+        JPanel panel =new JPanel(); 
+          
+        //create a new label 
+        JLabel l= new JLabel("select the day of the week"); 
+  
+        //String array to store weekdays 
+        String week[]= { "Train","Car","Airplane"}; 
+          
+        //create list 
+        list= new JList(week); 
+          
+        //set a selected index 
+        list.setSelectedIndex(2); 
+          
+        //add list to panel 
+        panel.add(list); 
+   
+        frame.add(panel); 
+          
+        //set the size of frame 
+        frame.setSize(400,400); 
+           
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true); 
+    } 
+      
+      
+} 

@@ -1,0 +1,82 @@
+import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.SwingUtilities;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
+/**
+ * JTree basic tutorial and example
+ * @author wwww.codejava.net
+ */
+public class Main extends JFrame
+{
+    private JTree tree;
+    private JLabel selectedLabel;
+     
+    public Main()
+    {
+        //create the root node
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Foods");
+        //create the child nodes
+        DefaultMutableTreeNode vegetableNode = new DefaultMutableTreeNode("Vegetables");
+        vegetableNode.add(new DefaultMutableTreeNode("Corn"));
+        vegetableNode.add(new DefaultMutableTreeNode("Peas"));
+        vegetableNode.add(new DefaultMutableTreeNode("Broccoli"));
+        vegetableNode.add(new DefaultMutableTreeNode("Beans"));
+         
+        DefaultMutableTreeNode fruitNode = new DefaultMutableTreeNode("Fruits");
+        fruitNode.add(new DefaultMutableTreeNode("Apples"));
+        fruitNode.add(new DefaultMutableTreeNode("Pears"));
+        fruitNode.add(new DefaultMutableTreeNode("Oranges"));
+        
+        DefaultMutableTreeNode nutNode = new DefaultMutableTreeNode("Nuts");
+        nutNode.add(new DefaultMutableTreeNode("Walnuts"));
+        nutNode.add(new DefaultMutableTreeNode("Almonds"));
+        nutNode.add(new DefaultMutableTreeNode("Pistachios"));
+        nutNode.add(new DefaultMutableTreeNode("Cashews"));
+        //add the child nodes to the root node
+        
+        root.add(fruitNode);
+        root.add(vegetableNode);
+        root.add(nutNode);
+        
+        //create the tree by passing in the root node
+        tree = new JTree(root);
+        DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();      
+         
+        tree.setCellRenderer(renderer);
+        tree.setShowsRootHandles(true);
+        tree.setRootVisible(false);
+        add(new JScrollPane(tree));
+         
+        selectedLabel = new JLabel();
+        add(selectedLabel, BorderLayout.SOUTH);
+        tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
+            @Override
+            public void valueChanged(TreeSelectionEvent e) {
+                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+                selectedLabel.setText(selectedNode.getUserObject().toString());
+            }
+        });
+         
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("JTree Example");       
+        this.setSize(200, 200);
+        this.setVisible(true);
+    }
+     
+    public static void main(String[] args)
+    {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Main();
+            }
+        });
+    }       
+}

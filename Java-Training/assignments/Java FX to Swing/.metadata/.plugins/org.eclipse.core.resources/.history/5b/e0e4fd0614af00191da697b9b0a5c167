@@ -1,0 +1,50 @@
+import java.awt.event.*; 
+import java.awt.*; 
+import javax.swing.*; 
+
+class Main extends JFrame  
+{ 
+    //frame 
+    static JFrame frame; 
+    //lists 
+    static JList list; 
+   
+  
+    //main class 
+    public static void main(String[] args) 
+    { 
+        //create a new frame  
+        frame = new JFrame("frame"); 
+          
+        //create a object 
+        Main s=new Main(); 
+        
+        //create a panel 
+        JPanel panel =new JPanel(); 
+        GridLayout gridLayout = new GridLayout(0,1);
+        panel.setLayout(gridLayout);
+        
+        //create a new label 
+        JLabel label= new JLabel("Select Transport Type"); 
+  
+        //String array to store weekdays 
+        String transport[]= { "Train","Car","Airplane"}; 
+          
+        //create list 
+        list= new JList(transport);  
+          
+        //add list to panel 
+        panel.add(label);
+        panel.add(list); 
+   
+        frame.add(panel); 
+          
+        //set the size of frame 
+        frame.setSize(400,400); 
+           
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true); 
+    } 
+      
+      
+} 

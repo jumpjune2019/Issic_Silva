@@ -1,0 +1,168 @@
+package preterm_swing;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import javax.swing.*;
+
+public class Seat {
+
+	JButton jbutton;
+	JLabel jlabel;
+	
+	//create variables for object
+	private boolean bookUnbook;
+	private int id;
+	private String initials;
+	private String seatName;
+	private String row;
+	private int column;
+	
+	
+	Seat(int i, String lf, boolean assignment, String r, int c, String name, int ri, JButton button, JLabel label){
+		setId(i);
+		setSeatInitials(lf);
+		setBooking(assignment);
+		setRow(r);
+		setColumn(c);
+		setSeatName(name);
+		
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public boolean getBooking() {
+		return bookUnbook;
+	}
+	
+	public void setBooking(boolean bookUnbook) {
+		this.bookUnbook = bookUnbook;
+	}
+	
+	public String getSeatName() {
+		return seatName;
+	}
+
+	public void setSeatName(String seatName) {
+		this.seatName = seatName;
+	}
+	
+	public String getSeatInitials() {
+		return initials;
+	}
+	
+	public void setSeatInitials(String initials) {
+		this.initials = initials;
+	}
+
+	public String getRow() {
+		return row;
+	}
+
+	public void setRow(String string) {
+		this.row = string;
+	}
+
+	public int getColumn() {
+		return column;
+	}
+
+	public void setColumn(int column) {
+		this.column = column;
+	}
+	
+	public JButton getButton() {
+		return jbutton;
+	}
+	
+	public void setButton(JButton button) {
+		this.jbutton = button;
+	}
+	
+	public JLabel getLabel() {
+		return jlabel;
+	}
+	
+	public void setLabel(JLabel label) {
+		this.jlabel = label;
+	}
+	
+	@Override
+	   public String toString() {
+	        return ("ID: "+this.getId()+
+	                " Seat Initials: "+ this.getSeatInitials() +
+	                " Seat Name: "+ this.getSeatName());
+	   }
+	
+	
+	
+	public JPanel SeatMatrix() throws NumberFormatException, IOException {
+		
+		Main main = new Main();
+		ClientJList client = new ClientJList();
+		
+		JPanel panelCenter = new JPanel(new GridLayout(main.gridRow, main.gridColumn, 5, 5));
+		
+		//render seat matrix and set initial attribute values
+		for(int i = 1; i < main.gridRow + 1 ; i++) {
+			for(int j = 1; j < main.gridColumn + 1; j++) {
+				JPanel tempPanel = new JPanel();
+				Seat seat = new Seat(j, initials, bookUnbook, row, j, initials, j, jbutton, jlabel);
+				BoxLayout boxlayout = new BoxLayout(tempPanel, BoxLayout.Y_AXIS);
+				tempPanel.setLayout(boxlayout);
+				seat.setRow(getCharForNumber(i));
+				seat.setColumn(j);
+				seat.setSeatName(seat.getRow() + seat.getColumn());
+				
+				JLabel tempLabel = new JLabel(seat.getRow() + "-" + seat.getColumn(), JLabel.CENTER);
+				JLabel clientLabel = new JLabel("Vacant");
+	
+				JButton tempButton = new JButton("book");
+				
+				tempButton.addActionListener( ActionEvent -> {
+					
+					int idx = client.jlist.getSelectedIndex();
+					System.out.println(idx);
+					// Display selection, if item was selected.
+					if(idx != -1) {
+						client.jlab.setText("Current Selection: " + client.clientList.get(idx).getClientId());
+						//tempID = clientList.get(idx).id;
+						//System.out.println(tempID);
+					}
+					int index = client.tempID;
+					System.out.println(index);
+					if(tempButton.getText().equals("book")) {
+						tempButton.setText("unbook");
+					}else if(tempButton.getText().equals("unbook")) {
+						tempButton.setText("book");
+					}
+				});
+				
+				seat.setLabel(clientLabel);
+				seat.setButton(tempButton);
+				
+				//tempLabel.setAlignmentX(Component.RIGHT_ALIGNMENT);
+				tempPanel.add(tempLabel);
+				tempPanel.add(seat.getLabel());
+				tempPanel.add(seat.getButton());
+				//tempPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+				panelCenter.add(tempPanel);
+			}
+		}
+		panelCenter.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+		return panelCenter;
+	}
+	
+	private static String getCharForNumber(int i) {
+	    return i > 0 && i < 27 ? String.valueOf((char)(i + 64)) : null;
+	}
+	
+}

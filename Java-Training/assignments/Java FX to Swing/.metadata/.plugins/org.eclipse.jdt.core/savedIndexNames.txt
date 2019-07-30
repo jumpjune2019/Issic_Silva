@@ -1,0 +1,17 @@
+INDEX VERSION 1.131+C:\Java-Training\Java FX to Swing\.metadata\.plugins\org.eclipse.jdt.core
+4178818176.index
+2418850949.index
+75285744.index
+117774581.index
+2676672244.index
+2829830889.index
+1180962099.index
+3147499934.index
+351299687.index
+79139394.index
+1204408078.index
+2274878750.index
+3979867234.index
+4036023688.index
+4031575576.index
+1237745937.index

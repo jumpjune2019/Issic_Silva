@@ -1,0 +1,147 @@
+package preterm_swing;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+
+public class SeatMatrix {
+	
+	static int gridColumn = 10;
+	static int gridRow = 10;
+	static int tempID;
+	// Client class constructor
+	static Client client = new Client("", "", 0, null);
+	//create model necessary to add list to JList
+	static	DefaultListModel<Client> listModel = new DefaultListModel<>();
+	// create JList of objects of Clients
+	static JList<Client> jlist;
+	// holding list for clients
+	static List<Client> tempList = new ArrayList<Client>();
+	static JButton undoAll = new JButton("Reset Seats");
+	
+public static JPanel SeatMatrix() throws NumberFormatException, IOException {
+		
+		//set the size and allocate space for tempList to hold removed clients
+		for(int i = 0; i < client.clientList.size(); i ++) {
+			tempList.add(client);
+		}
+
+		JPanel panelCenter = new JPanel(new GridLayout(gridRow, gridColumn, 5, 5));
+		
+		//render seat matrix and set initial attribute values
+		for(int i = 1; i < gridRow + 1 ; i++) {
+			for(int j = 1; j < gridColumn + 1; j++) {
+				Seat seat = new Seat(0, null, false, null, 0, null, 0, null, null, 0);
+				JPanel tempPanel = new JPanel();
+				BoxLayout boxlayout = new BoxLayout(tempPanel, BoxLayout.Y_AXIS);
+				tempPanel.setLayout(boxlayout);
+				seat.setRow(getCharForNumber(i));
+				seat.setColumn(j);
+				seat.setSeatName(seat.getRow() + seat.getColumn());
+				
+				JLabel tempLabel = new JLabel(seat.getRow() + "-" + seat.getColumn(), JLabel.CENTER);
+				JLabel clientLabel = new JLabel("Vacant");
+				JButton tempButton = new JButton("book");
+	
+				
+				//set tempID as -1 so user cannot book unless a name is selected
+				tempID = -1;
+				//booking / un-booking
+				tempButton.addActionListener( ActionEvent -> {
+					
+					//get the index of selected name
+					int idx = tempID;
+					// if a name is not selected then booking can't be done
+					if(idx != -1) {
+						// if a selection option is empty, that option cannot be booked
+						if(!listModel.get(idx).getClientFirstName().isEmpty()) {
+							// if a seat is empty then booking is possible
+							if(seat.getBooking() == false) {
+								//book seat if vacant
+								if(tempButton.getText().equals("book")) {
+									listModel.get(idx).setSeat(seat.getSeatName());
+									seat.setBooking(true);
+									seat.setJListID(idx);
+									seat.setId(listModel.get(idx).getClientId());
+									seat.setSeatInitials(listModel.get(idx).getClientInitials());
+									clientLabel.setText("id: " + seat.getId() + "/ " + seat.getSeatInitials());
+									seat.setLabel(clientLabel);
+									tempButton.setText("unbook");
+									tempButton.setForeground(Color.RED);
+									tempList.set(idx, listModel.get(idx));
+									listModel.set(idx, client);
+								}
+							}else {
+								//unbook seat if seat is occupied
+								if(tempButton.getText().equals("unbook")) {
+									seat.setBooking(false);
+									seat.setId(0);
+									seat.setSeatInitials(null);
+									clientLabel.setText("Vacant");
+									seat.setLabel(clientLabel);
+									tempButton.setText("book");
+									tempButton.setForeground(Color.black);
+									listModel.set(seat.getJListID(), tempList.get(seat.getJListID()));
+									tempList.set(seat.getJListID(), client);
+								}
+							}
+						}else if(tempButton.getText().equals("unbook")) {
+							seat.setBooking(false);
+							seat.setId(0);
+							seat.setSeatInitials(null);
+							clientLabel.setText("Vacant");
+							seat.setLabel(clientLabel);
+							tempButton.setText("book");
+							tempButton.setForeground(Color.black);
+							listModel.set(seat.getJListID(), tempList.get(seat.getJListID()));
+							tempList.set(seat.getJListID(), client);
+						}
+					}
+				});
+				
+				undoAll.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						seat.setBooking(false);
+						seat.setId(0);
+						seat.setSeatInitials(null);
+						clientLabel.setText("Vacant");
+						seat.setLabel(clientLabel);
+						tempButton.setText("book");
+						tempButton.setForeground(Color.black);
+						listModel.set(seat.getJListID(), tempList.get(seat.getJListID()));
+						listModel.set(0, client.clientList.get(0));
+					}
+				});
+				
+				//update GUI
+				seat.setLabel(clientLabel);
+				seat.setButton(tempButton);
+				tempPanel.add(tempLabel);
+				tempPanel.add(seat.getLabel());
+				tempPanel.add(seat.getButton());
+				panelCenter.add(tempPanel);
+			}
+		}
+		panelCenter.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+		return panelCenter;
+	}
+
+private static String getCharForNumber(int i) {
+    return i > 0 && i < 27 ? String.valueOf((char)(i + 64)) : null;
+}
+}
+
